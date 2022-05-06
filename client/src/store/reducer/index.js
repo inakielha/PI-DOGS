@@ -1,11 +1,13 @@
 import { ASCENDENTE } from "../../constantes/sort";
-import { GET_DOGS, SEARCH_DOG, SEARCH_TEMPER, SORT, SORT_WEIGHT } from "../actions";
+import { GET_DOGS, GET_TEMPERAMENTS, POST_DOG, SEARCH_DOG, SEARCH_ID, SEARCH_TEMPER, SORT, SORT_WEIGHT } from "../actions";
 
 const initialState = {
     dogs: [],
     tempers: [],
     filterDogs: [],
-    newDogs: []
+    newDogs: [],
+    dogById: [],
+    getAllTemperaments:[]
 }
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -79,6 +81,20 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 filterDogs: action.payload
+            }
+        case SEARCH_ID:
+            return {
+                ...state,
+                dogById: action.payload
+            }
+        case POST_DOG:
+            return {
+                ...state
+            }
+        case GET_TEMPERAMENTS:
+            return {
+                ...state,
+                getAllTemperaments: action.payload
             }
         default:
             return state
