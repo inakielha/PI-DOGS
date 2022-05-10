@@ -1,0 +1,17 @@
+.FilterDiv{
+    color: #52796f;
+    flex-direction: column;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.FilterDiv select{
+    width: 33vh;
+    background-color: #f0d16a44;
+    border: 2px solid rgba(128, 128, 128, 0.3);
+    color: #52796f;
+    font-weight: 500;
+    padding-left: 30px;
+    margin-left: 7px;
+    border-radius: 5vh;
+}

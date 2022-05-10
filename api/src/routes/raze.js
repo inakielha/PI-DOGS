@@ -84,7 +84,7 @@ router.get("/", async (req, res, next) => {
 })
 router.post("/", async (req, res, next) => {
     try {
-        const { name, heightMin,heightMax, weightMin, weightMax ,lifeSpan, img, temperament } = req.body
+        const { name, heightMin,heightMax, weightMin, weightMax ,lifeSpanFrom, lifeSpanTo, img, temperament } = req.body
         if (!name || !heightMin || !heightMax ||!weightMin || !weightMax) res.json("Missing information");
 
         const result = await axios(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
@@ -94,6 +94,7 @@ router.post("/", async (req, res, next) => {
         if (dogs.length) return res.status(400).json({ error: "This dog already exist" })
         const height = heightMin + " - " + heightMax
         const weight = weightMin + " - " + weightMax
+        const lifeSpan = lifeSpanFrom + " - " + lifeSpanTo
         const doggy = await Raze.create({
             height, weight, lifeSpan, img, name
 

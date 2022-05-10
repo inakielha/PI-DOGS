@@ -1,0 +1,9 @@
+.Btn {
+    width: 100px;
+    height: 35px;
+    border-radius: 5vh;
+    margin-left: 2px;
+    background-color: #e8e8e8;
+    position: relative;
+    bottom: 10px;
+}

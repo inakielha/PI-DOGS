@@ -4,8 +4,7 @@ import FirstPage from './components/Initial_Page/FirstPage/FirstPage';
 import PrincipalRoute from './components/PrincipalRoute/PrincipalRoute';
 import DetailCard from './components/DogDetail/DetailCard/DetailCard';
 import CreateDog from './components/CreateDog/CreateDog';
-import Navbar from './components/Navbar/Navbar';
-
+import "normalize.css"
 
 function App() {
   return (

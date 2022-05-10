@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { searchById} from "../../../store/actions"
 import { useEffect } from "react"
+import style from "./DetailCard.module.css"
 
 export default function DetailCard(){
 const dispatch = useDispatch()
@@ -14,12 +15,12 @@ console.log(params.id)
 const allDogs = useSelector ((state)=>state.dogById)
 console.log(allDogs)
 return (
-    <div>
+    <div className={style.InfoDiv}>
         {
         typeof(allDogs)==="object" ? 
-        <div>
-            <h1> {allDogs.name}</h1>
-            <img src={allDogs.img} alt="imagen" />
+        <div className={style.powBobi}>
+            <h1 className={style.rowDiv}> {allDogs.name}</h1>
+            <img className={style.DogImg} src={allDogs.img} alt="imagen" />
             <h4>{allDogs.height} Cm </h4>
             <h4>{allDogs.weight} kG </h4>
             <h4>{allDogs.temperament}</h4>
@@ -27,7 +28,7 @@ return (
             </div> : <p>Loading...</p>
     }
     <Link to= "/home">
-        <button>Go Back</button>
+        <button className={style.Btns}>Go Back</button>
     </Link>
 
     </div>

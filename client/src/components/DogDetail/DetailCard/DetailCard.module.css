@@ -1,0 +1,35 @@
+.InfoDiv{
+    display: flex;
+    flex-direction: column;
+    color: var(--primary-font-color);
+    font-weight: bold;
+    text-shadow: 0.3vh 0.3vh 0.4vh #f0d16a;
+    align-items: center;
+}
+.powBobi{
+    background-color: #f0d16a94;
+    width: 50%;
+    border-radius: 5vh;
+    margin-top: 40px;
+}
+.DogImg{
+    width: 50vh;
+    height: 40vh;
+    overflow: hidden;
+    border-radius: 5vh;
+}
+
+
+.Btns{
+    background-color: antiquewhite;
+    font-weight: 700;
+    border: solid 2px transparent;
+    border-radius: 5vh;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    padding: 20px ;
+    text-decoration: none;
+}

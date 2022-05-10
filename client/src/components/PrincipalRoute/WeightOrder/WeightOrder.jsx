@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { ASCENDENTE, DESCENDENTE } from "../../../constantes/sort";
 import { sortWeight } from "../../../store/actions";
+import style from "./WeightOrder.module.css"
 
 export default function WeightOrder(){
     const dispatch = useDispatch()
@@ -8,9 +9,12 @@ export default function WeightOrder(){
     dispatch(sortWeight(e.target.value))
     }
     return (
-        <select name = "select" onChange={onSelectChange} >
-            <option value={ASCENDENTE}>{ASCENDENTE}</option>
-            <option value= {DESCENDENTE}>{DESCENDENTE}</option>
+        <div className={style.FilterDiv}> 
+            Sort by weight:
+        <select className={style.OrderDivSelect} name = "select" onChange={onSelectChange} >
+            <option value={ASCENDENTE}>Light</option>
+            <option value= {DESCENDENTE}>Heavy</option>
         </select>
+        </div>
     )
 }

@@ -7,7 +7,8 @@ const initialState = {
     filterDogs: [],
     newDogs: [],
     dogById: [],
-    getAllTemperaments:[]
+    getAllTemperaments:[],
+    searchError: []
 }
 export default function reducer(state = initialState, action) {
     switch (action.type) {

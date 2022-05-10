@@ -1,0 +1,13 @@
+.lista {
+	display: flex;
+	position: absolute;
+	left: 10%;
+}
+.lista li {
+	display: inline;
+	padding: 0px 10px;
+    cursor: pointer;
+}
+.lista li a:hover {
+	color: white;
+}

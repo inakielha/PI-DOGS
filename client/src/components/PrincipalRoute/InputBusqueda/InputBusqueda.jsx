@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { searchDog } from "../../../store/actions";
 import { useDispatch } from "react-redux";
-
+import style from "./InputBusqueda.module.css"
 
 export default function InputBusqueda(){
 
@@ -16,17 +16,17 @@ export default function InputBusqueda(){
         dispatch(searchDog(datos))
     }
     return (
-        <div>
+        <div className="">
             <form className="form" onSubmit={sendData}>
 
             <input 
             type="text" 
             placeholder="Dog Breed "
-            className="typeControl"
+            className= {style.Input}
             onChange={handleInputChange}
             value= {datos}
             />
-            <button className="button" type="submit">Find Doggy</button>
+            <button className={style.Btn} type="submit">Find Doggy</button>
             </form>
         </div>
     );

@@ -4,6 +4,7 @@ import { getDogs } from "../../../store/actions";
 import Dog from "../Dog/Dog";
 import Paginado from "../Paginado/Paginado";
 import { Link } from "react-router-dom";
+import style from "./Dogs.module.css"
 
 export default function Dogs(props) {
     /*let dogs = useSelector((state)=> state.filterDogs)
@@ -29,21 +30,23 @@ export default function Dogs(props) {
     }, [])
 
     return (
-        <div>
-            <Paginado
-                dogsPerPage={dogsPerPage}
-                allDogs={allDogs.length}
-                paginado={paginado}
-            />
-            <div>
+        <div className={style.Doggys}>
                 {currentDogs.map((dog) => {
                     return (
-
-                        <Link to={"/home/" + dog.id}>
-                            <Dog key={dog.id} temperament={dog.temperament} name={dog.name} img={dog.img} weight={dog.weight} />
-                        </Link>
+                        <div>
+                        <Dog key={dog.id} id={dog.id} temperament={dog.temperament} name={dog.name} img={dog.img} weight={dog.weight} />
+                        {/* <Link to={"/home/" + dog.id}>
+                            <button className={style.Btn}> Detail</button>
+                        </Link> */}
+                            </div>
                     )
                 })}
+                            <div className={style.PrimaryDiv}>
+                                <Paginado
+                                    dogsPerPage={dogsPerPage}
+                                    allDogs={allDogs.length}
+                                    paginado={paginado}
+                                />
             </div>
         </div>
     )

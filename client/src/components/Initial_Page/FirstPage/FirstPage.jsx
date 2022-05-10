@@ -1,5 +1,5 @@
 
-import img from "../../../dog.png"
+import img from "../../../Assets/dog.png"
 import { Link } from "react-router-dom"
 
 export default function FirstPage(){

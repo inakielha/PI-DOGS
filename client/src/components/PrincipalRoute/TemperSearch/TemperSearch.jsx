@@ -1,6 +1,7 @@
 import { searchTemper } from "../../../store/actions"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
+import style from "./TemperSearch.module.css"
 
 
 export default function TemperSearch(){
@@ -16,17 +17,17 @@ export default function TemperSearch(){
         dispatch(searchTemper(datos))
     }
     return (
-        <div>
+        <div className= "">
             <form className="form" onSubmit={sendData}>
 
-            <input 
+            <input
+            className={style.Input}
             type="text" 
             placeholder="Dog Temper "
-            className="typeControl"
             onChange={handleInputChange}
             value= {datos}
             />
-            <button className="button" type="submit">Search</button>
+            <button className={style.Btn} type="submit">Search</button>
             </form>
         </div>
     );

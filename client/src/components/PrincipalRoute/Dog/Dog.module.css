@@ -1,0 +1,31 @@
+.Dog{
+    width: 60vh;
+    height: 70vh;
+    margin: 20px 10vh 10vh 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6vh;
+    background-color: #f0d16a94;
+    color: #52796f;
+}
+.DogImg{
+    width: 50vh;
+    height: 40vh; 
+    overflow: hidden;
+    border-radius: 5vh;
+}
+.Btn {
+    width: 100px;
+    height: 35px;
+    border-radius: 5vh;
+    margin-left: 2px;
+    background-color: #e8e8e8;
+    position: relative;
+    bottom: 10px;
+}
+.Btn:hover {
+    background-color: #3b5998;
+    cursor: pointer;
+}

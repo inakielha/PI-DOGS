@@ -1,6 +1,7 @@
 import axios from "axios"
 export const GET_DOGS = "GET_DOGS"
 export const SEARCH_DOG = "SEARCH_DOG"
+export const SEARCH_DOG_FAILER = "SEARCH_DOG_FAILER"
 export const SORT = "SORT"
 export const SORT_WEIGHT = "SORT_WEIGHT"
 export const SEARCH_TEMPER = "SEARCH_TEMPER"
@@ -33,9 +34,10 @@ export function searchDog(search) {
                     type: SEARCH_DOG,
                     payload: dog.data
                 })
+                console.log(dog.data)
             })
             .catch((error) => {
-                console.log(error)
+             alert("This dog doesnt exist")   
             })
     }
 }
