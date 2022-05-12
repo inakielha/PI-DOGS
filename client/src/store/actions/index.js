@@ -13,7 +13,7 @@ export const CLEAN_BY_ID = "CLEAN_BY_ID"
 
 export function getDogs() {
     return function (dispatch) {
-        axios.get("http://localhost:3001/dogs")
+        axios.get("/dogs")
             .then((dogs) => {
                 dispatch({
                     type: GET_DOGS,
@@ -29,7 +29,7 @@ export function getDogs() {
 
 export function searchDog(search) {
     return function (dispatch) {
-        axios.get("http://localhost:3001/dogs?name=" + search)
+        axios.get("/dogs?name=" + search)
             .then((dog) => {
                 dispatch({
                     type: SEARCH_DOG,
@@ -45,7 +45,7 @@ export function searchDog(search) {
 }
 export function searchTemper(search) {
     return function (dispatch) {
-        axios.get("http://localhost:3001/dogs?temperament=" + search)
+        axios.get("/dogs?temperament=" + search)
             .then((dog) => {
                 dispatch({
                     type: SEARCH_TEMPER,
@@ -74,7 +74,7 @@ export function sortWeight(order) {
 
 export function searchById(search) {
     return function (dispatch) {
-        axios.get("http://localhost:3001/dogs/" + search)
+        axios.get("/dogs/" + search)
             .then((dog) => {
                 dispatch({
                     type: SEARCH_ID,
@@ -89,7 +89,7 @@ export function searchById(search) {
 export function postDog(dogInfo) {
     return async function (dispatch) {
         try {
-            const res = await axios.post("http://localhost:3001/dogs", dogInfo);
+            const res = await axios.post("/dogs", dogInfo);
             console.log(res)
             return res
         } catch (error) {
@@ -101,7 +101,7 @@ export function postDog(dogInfo) {
 export function getTemperaments() {
     return async function (dispatch) {
         try {
-            const res = await axios.get("http://localhost:3001/temperament");
+            const res = await axios.get("/temperament");
             return dispatch({
                 type: GET_TEMPERAMENTS,
                 payload: res.data
