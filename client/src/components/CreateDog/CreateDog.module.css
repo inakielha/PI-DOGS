@@ -1,9 +1,81 @@
-.Btn {
-    width: 100px;
-    height: 35px;
+.Contenedor {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
     border-radius: 5vh;
-    margin-left: 2px;
-    background-color: #e8e8e8;
-    position: relative;
-    bottom: 10px;
+    background-color: #f0d16a44;
+    margin-top: 25px;
 }
+.h1 {
+    border-bottom: 2px solid #fff;
+
+}
+.block{
+    grid-column: 1/3;
+    padding: 8px 0px;
+    cursor: pointer;
+}
+.h1Class {
+    text-align: center;
+    text-transform: uppercase;
+    color: #52796f;
+    padding-top: 25px;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+.label {
+    display: block;
+    font-size: 20px;
+    margin: 5px 0px;
+    color: #52796f;
+}
+
+.select {
+    position: absolute;
+    top: 0px;
+    display: block;
+    font-size: 20px;
+    margin: 5px 0px;
+}
+.ul {
+    list-style: none;
+    color: #52796f;
+}
+.error {
+    color: #e76f51;
+}
+.inputw {
+    padding: 0.5em;
+    border: none;
+    outline: 0px;
+    background: none;
+    border-bottom: 2px solid #fff ;
+    color: #52796f;
+    outline: none;
+}
+.boke {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.optionn {
+    color: #52796f;
+}
+.Btn {
+    margin-top: 25px;
+    width: 100px;
+    border-radius: 5vh;
+    margin-left: 10px;
+    background-color: #f0d16a44;
+    position: relative;
+    right: 11px;
+    color: #52796f;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+.focus { 
+    outline: none;
+ }

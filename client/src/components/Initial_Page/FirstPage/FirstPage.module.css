@@ -1,0 +1,17 @@
+.divs {
+    width: 1366px;
+    height: 661px;
+    background: url(C:\Users\Ana\Desktop\PI-Dogs-main\PI-Dogs-main\client\src\Assets\anoir-chafik-2_3c4dIFYFU-unsplash.jpg) no-repeat center/cover;
+}
+.btn {
+position: absolute;
+top: 40%;
+right: 48%;
+border-radius: 5vh;
+font-size: 20px;
+padding: 20px 30px;
+background-color: #f0d16aec;
+opacity: 1;
+border: 3px solid #fff;
+cursor: pointer;
+} 

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate, } from "react-router-dom"
 import validate from "../../constantes/validate"
 import { getTemperaments, postDog } from "../../store/actions"
-import style from "./CreateDog.module.css"
-
+import { Contenedor, h1, h1Class, form, block, label, ul, error, inputw, boke, optionn, Btn } from "./CreateDog.module.css"
+    
 
 export default function CreateDog() {
     const dispatch = useDispatch()
@@ -54,14 +54,14 @@ export default function CreateDog() {
         console.log("soy error")
         console.log(errors)
 
-        if (!errors.name && !errors.weightMin && !errors.weightMax && !errors.heightMin && !errors.heightMax && !errors.lifeSpanFrom && !errors.lifeSpanTo && !errors.img){
+        if (!errors.name && !errors.weightMin && !errors.weightMax && !errors.heightMin && !errors.heightMax && !errors.lifeSpanFrom && !errors.lifeSpanTo && !errors.img) {
 
             dispatch(postDog(input))
             alert("There is a new Doggy in town!")
             setInput({
                 name: "",
                 heightMin: "",
-                heightMax:"",
+                heightMax: "",
                 weightMin: "",
                 weightMax: "",
                 lifeSpanFrom: "",
@@ -73,123 +73,148 @@ export default function CreateDog() {
         } else {
             alert("Missing or wrong information, check it please")
         }
-        }
-        
+    }
+
 
     useEffect(() => {
         dispatch(getTemperaments())
-        if(input.name && input.weightMin && input.weightMax && input.heightMin && input.heightMax &&!errors.name && !errors.weightMin && !errors.weightMax && !errors.heightMin && !errors.heightMax && !errors.lifeSpanFrom && !errors.lifeSpanTo && !errors.img){
+        if (input.name && input.weightMin && input.weightMax && input.heightMin && input.heightMax && !errors.name && !errors.weightMin && !errors.weightMax && !errors.heightMin && !errors.heightMax && !errors.lifeSpanFrom && !errors.lifeSpanTo && !errors.img) {
             setDisabled(false)
-        }else{
+        } else {
             setDisabled(true)
         }
-    }, [input,errors]);
+    }, [input, errors]);
 
 
 
     return (
         <div>
-            <Link to="/home"><button>Go Back</button></Link>
-            <h1 className="title">Create new Doggy</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <div>
-                    <label> Name:</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={input.name}
-                        onChange={(e) => handleInput(e)} />
-                    {errors.name && (
-                        <p className="error">{errors.name}</p>
-                    )}
+
+            <Link to="/home"><button className={Btn}>Go Back</button></Link>
+            <div className={Contenedor}>
+                <div className={h1}>
+                    <h1 className={h1Class}>Create new Doggy</h1>
                 </div>
-                <div>
-                    <label>Height (Cm):</label>
-                    <input
-                        type="text"
-                        name="heightMin"
-                        value={input.heightMin}
-                        onChange={(e) => handleInput(e)}
-                        placeholder={"Min"} />
+                <form className={form} onSubmit={(e) => handleSubmit(e)}>
+                    <div className={block}>
+                        <label className={label}> Name:</label>
+                        <input
+                            className={inputw}
+                            type="text"
+                            name="name"
+                            value={input.name}
+                            onChange={(e) => handleInput(e)} />
+                        {errors.name && (
+                            <p className={error}>{errors.name}</p>
+                        )}
+                    </div>
+                    <div className={boke}>
+                        <label className={label}>Height Min:</label>
+                        <input
+                            className={inputw}
+                            type="text"
+                            name="heightMin"
+                            value={input.heightMin}
+                            onChange={(e) => handleInput(e)}
+                            placeholder="Min Cm" />
                         {errors.heightMin && (
-                        <p className="error">{errors.heightMin}</p>
-                    )}
-                    <input
-                        type="text"
-                        name="heightMax"
-                        value={input.heightMax}
-                        onChange={(e) => handleInput(e)}
-                        placeholder={"Max"} />
+                            <p className={error}>{errors.heightMin}</p>
+                        )}
+                    </div>
+                    <div className={boke}>
+                        <label className={label}> Height Max</label>
+                        <input
+                            className={inputw}
+                            type="text"
+                            name="heightMax"
+                            value={input.heightMax}
+                            onChange={(e) => handleInput(e)}
+                            placeholder="Max Cm" />
                         {errors.heightMax && (
-                        <p className="error">{errors.heightMax}</p>
-                    )}
-                </div>
-                <div>
-                    <label>Weight (Kg):</label>
-                    <input
-                        type="text"
-                        name="weightMin"
-                        value={input.weightMin}
-                        onChange={(e) => handleInput(e)}
-                        placeholder={"Min"} />
+                            <p className={error}>{errors.heightMax}</p>
+                        )}
+                    </div>
+                    <div className={boke}>
+                        <label className={label}>Weight:</label>
+                        <input
+                            className={inputw}
+                            type="text"
+                            name="weightMin"
+                            value={input.weightMin}
+                            onChange={(e) => handleInput(e)}
+                            placeholder={"Kg Min"} />
                         {errors.weightMin && (
-                        <p className="error">{errors.weightMin}</p>
-                    )}
-                    <input
-                        type="text"
-                        name="weightMax"
-                        value={input.weightMax}
-                        onChange={(e) => handleInput(e)}
-                        placeholder={"Max"} />
+                            <p className={error}>{errors.weightMin}</p>
+                        )}
+
+                    </div>
+                    <div className={boke}>
+                        <label className={label} > Weight Max: </label>
+                        <input
+                            className={inputw}
+                            type="text"
+                            name="weightMax"
+                            value={input.weightMax}
+                            onChange={(e) => handleInput(e)}
+                            placeholder={"Kg Max"} />
                         {errors.weightMax && (
-                        <p className="error">{errors.weightMax}</p>
-                    )}
-
-                </div>
-                <div>
-                    <label>Life Span:</label>
-                    <input type="text"
-                        value={input.lifeSpanFrom}
-                        name="lifeSpanFrom"
-                        placeholder="from"
-                        onChange={(e) => handleInput(e)} />
+                            <p className={error}>{errors.weightMax}</p>
+                        )}
+                    </div>
+                    <div className={boke}>
+                        <label className={label}>Life Span From:</label>
+                        <input type="text"
+                            className={inputw}
+                            value={input.lifeSpanFrom}
+                            name="lifeSpanFrom"
+                            placeholder="from"
+                            onChange={(e) => handleInput(e)} />
                         {errors.lifeSpanFrom && (
-                        <p className="error">{errors.lifeSpanFrom}</p>
-                    )}
+                            <p className={error}>{errors.lifeSpanFrom}</p>
+                        )}
 
-                    <input type="text"
-                        value={input.lifeSpanTo}
-                        name="lifeSpanTo"
-                        placeholder="to"
-                        onChange={(e) => handleInput(e)} />
+                    </div>
+                    <div className={boke}>
+                        <label className={label} >Life Span To</label>
+                        <input type="text"
+                            className={inputw}
+                            value={input.lifeSpanTo}
+                            name="lifeSpanTo"
+                            placeholder="to"
+                            onChange={(e) => handleInput(e)} />
                         {errors.lifeSpanTo && (
-                        <p className="error">{errors.lifeSpanTo}</p>
-                    )}
-
-                </div>
-                <div>
-                    <label>Image Direction:</label>
-                    <input type="text"
-                        value={input.img}
-                        name="img"
-                        onChange={(e) => handleInput(e)} />
+                            <p className={error}>{errors.lifeSpanTo}</p>
+                        )}
+                    </div>
+                    <div className={boke}>
+                        <label className={label}>Image Direction:</label>
+                        <input
+                            placeholder="URL"
+                            className={inputw}
+                            type="text"
+                            value={input.img}
+                            name="img"
+                            onChange={(e) => handleInput(e)} />
                         {errors.img && (
-                        <p className="error">{errors.img}</p>
-                    )}
+                            <p className={error}>{errors.img}</p>
+                        )}
 
-                </div>
-                <div>
-                    Temperaments:
-                    <select onChange={(e) => handleSelect(e)}>
-                        {allTemperaments.map((temp) => (
-                            <option key={temp.id} value={temp.name}>{temp.name}</option>
-                        ))}
-                    </select>
-                    <ul><li>{input.temperament.map(temp => temp + ", ")}</li></ul>
-                </div>
+                    </div>
+                    <div className={boke}>
+                        <p className={label}>
+                            Temperaments:
+                        </p>
+                        <select className={inputw} onChange={(e) => handleSelect(e)}>
+                            {allTemperaments.map((temp) => (
+                                <option className={optionn} key={temp.id} value={temp.name}>{temp.name}</option>
+                            ))}
+                        </select>
+                        <ul><li className={ul}>{input.temperament.map(temp => temp + ", ")}</li></ul>
+                    </div>
 
-                <button type="submit" className={style.Btn} disabled={disabled}>Create Dog </button>
-            </form>
+                    <button type="submit" className={block} disabled={disabled}>Create Dog </button>
+                </form>
+            </div>
         </div>
     )
 

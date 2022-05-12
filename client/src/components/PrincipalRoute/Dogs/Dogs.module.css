@@ -4,26 +4,24 @@
     width: 100%;
 }
 .Doggys{
-    /* margin-top: -3vh;
-    margin-left: 10vh;
-    display: grid;
-    justify-items: stretch;
-    align-items: stretch;
-    grid-template-areas: "a a a a";
-    gap: 0px;
-    grid-auto-columns: 68vh;*/
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         text-align: center;
         
 }
 .Btn {
-    width: 100px;
-    height: 35px;
+    width: 200px;
+    height: 50px;
     border-radius: 5vh;
     margin-left: 2px;
     background-color: #f0d16a44;
     position: relative;
-    right: 75px;
-    bottom: 60px;
+    /* right: 75px;*/
+    bottom: -20px;
+    cursor: pointer; 
+}
+.hh2 {
+    color: #e76;
+    grid-column: 1/3;
+    font-size: 25px;
 }

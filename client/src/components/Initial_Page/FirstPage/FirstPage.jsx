@@ -1,10 +1,13 @@
 
-import img from "../../../Assets/dog.png"
 import { Link } from "react-router-dom"
+import style from "./FirstPage.module.css"
 
-export default function FirstPage(){
-    return <div>
-        <img src={img} alt="DogImage"/>
-        <Link to ="/home"><button> Get in</button> </Link>
-    </div>
+export default function FirstPage() {
+    return (
+        <body className={style.divs}>
+            <div className="">
+                <Link to="/home"><button className={style.btn}> Get in</button> </Link>
+            </div>
+        </body>
+    )   
 }

@@ -62,7 +62,7 @@ router.get("/", async (req, res, next) => {
                     razasQuery.push(ele);
                 }
             })
-            if (razasQuery.length === 0) return res.status(404).json({ error: "Couldn't find your doggy" })
+             if (razasQuery.length === 0) return res.send("NoName")
             return res.json(razasQuery)
         }
 
@@ -73,7 +73,7 @@ router.get("/", async (req, res, next) => {
                     if (ele.temperament.toLowerCase().indexOf(temperament.toLowerCase()) !== -1) dogsFilteredByTemper.push(ele)
                 }
             })
-            if (dogsFilteredByTemper.length === 0) return res.status(404).json("There is no dogs with this temperaments")
+            if (dogsFilteredByTemper.length === 0) return res.send("NoTemper")
             return res.json(dogsFilteredByTemper)
         }
 
@@ -84,8 +84,8 @@ router.get("/", async (req, res, next) => {
 })
 router.post("/", async (req, res, next) => {
     try {
-        const { name, heightMin,heightMax, weightMin, weightMax ,lifeSpanFrom, lifeSpanTo, img, temperament } = req.body
-        if (!name || !heightMin || !heightMax ||!weightMin || !weightMax) res.json("Missing information");
+        const { name, heightMin, heightMax, weightMin, weightMax, lifeSpanFrom, lifeSpanTo, img, temperament } = req.body
+        if (!name || !heightMin || !heightMax || !weightMin || !weightMax) res.json("Missing information");
 
         const result = await axios(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
         const dogs = result.data
@@ -100,22 +100,6 @@ router.post("/", async (req, res, next) => {
 
         })
         if (temperament) {
-            /*let arrayTemperaments = temperament.toLowerCase().split(", ")
-
-            arrayTemperaments.forEach(async (element) => {
-                await Temper.findOrCreate({
-                    where: {
-                        name: element
-                    }
-                })
-                let verificarDB = await Temper.findOne({
-                    where: {
-                        name: element
-                    }
-                })
-                console.log(verificarDB)
-                if (verificarDB) await doggy.setTempers(verificarDB.id)
-            })*/
 
             temperament.forEach(async (element) => {
                 await Temper.findOrCreate({
@@ -190,5 +174,24 @@ router.get("/:idRaza", async (req, res, next) => {
         next(e)
     }
 })
+
+// router.delete("/", async (req, res, next) =>{
+//     try {
+//         const {name} = req.query
+//         console.log(name)
+//         if (name){
+//             let verificarDB = await Raze.destroy({
+//                 where: {
+//                     name: name
+//                 }
+//             })
+//             if (verificarDB===1) res.json("The dog has been succesfully delete")
+//             if (!verificarDB) res.json("we couldnt find your doggy")
+//         }
+//         res.status(404).json("Name is require")
+//     } catch (error){
+//         console.log(error)
+//     }
+// })
 
 module.exports = router;

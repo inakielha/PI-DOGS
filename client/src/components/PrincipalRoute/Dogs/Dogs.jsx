@@ -7,12 +7,7 @@ import { Link } from "react-router-dom";
 import style from "./Dogs.module.css"
 
 export default function Dogs(props) {
-    /*let dogs = useSelector((state)=> state.filterDogs)
-    let dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getDogs())
-    }, [])
-    */
+
     const dispatch = useDispatch()
     const allDogs = useSelector((state) => state.filterDogs)
     const [currentPage, setCurrentPage] = useState(1)
@@ -20,33 +15,63 @@ export default function Dogs(props) {
     const indexOfLastDog = currentPage * dogsPerPage
     const indexOfFirstDog = indexOfLastDog - dogsPerPage
     const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog)
+    const [btn, setbtn] = useState(true)
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
+    function handleBtn(e) {
+        e.preventDefault();
+        setbtn(
+            !btn
+        )
+        console.log(btn)
+    }
 
     useEffect(() => {
         dispatch(getDogs())
-    }, [])
+    }, [btn])
+    console.log(currentDogs)
 
     return (
         <div className={style.Doggys}>
-                {currentDogs.map((dog) => {
-                    return (
-                        <div>
+            {typeof (currentDogs) === "object" && currentDogs.map((dog) => {
+                return (
+                    <div>
                         <Dog key={dog.id} id={dog.id} temperament={dog.temperament} name={dog.name} img={dog.img} weight={dog.weight} />
-                        {/* <Link to={"/home/" + dog.id}>
-                            <button className={style.Btn}> Detail</button>
-                        </Link> */}
-                            </div>
-                    )
-                })}
-                            <div className={style.PrimaryDiv}>
-                                <Paginado
-                                    dogsPerPage={dogsPerPage}
-                                    allDogs={allDogs.length}
-                                    paginado={paginado}
-                                />
+                    </div>
+                )
+            })}
+            <div className={style.hh2}>
+                {currentDogs.length === 0 &&
+                    <div className="">
+                        <h2 className=""> Loading...</h2>
+                    </div>
+                }
+            </div>
+            <div className={style.hh2}>
+                {currentDogs === "NoName" &&
+
+                    <div>
+                        <p className=""> We couldnt find your Dog </p>
+                        <button type="submit" onClick={(e) => handleBtn(e)} className={style.Btn}> Go Back </button>
+                    </div>
+                }
+            </div>
+            <div className={style.hh2}>
+                {currentDogs === "NoTemper" &&
+                    <div>
+                        <p className=""> We couldnt find a dog with this temper </p>
+                        <button onClick={(e)=> handleBtn(e)} className={style.Btn}> Go Back </button>
+                    </div>
+                }
+            </div>
+            <div className={style.PrimaryDiv}>
+                <Paginado
+                    dogsPerPage={dogsPerPage}
+                    allDogs={allDogs.length}
+                    paginado={paginado}
+                />
             </div>
         </div>
     )

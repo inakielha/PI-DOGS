@@ -1,5 +1,5 @@
 import { ASCENDENTE } from "../../constantes/sort";
-import { GET_DOGS, GET_TEMPERAMENTS, POST_DOG, SEARCH_DOG, SEARCH_ID, SEARCH_TEMPER, SORT, SORT_WEIGHT } from "../actions";
+import { cleanByid, CLEAN_BY_ID, GET_DOGS, GET_TEMPERAMENTS, POST_DOG, SEARCH_DOG, SEARCH_ID, SEARCH_TEMPER, SORT, SORT_WEIGHT } from "../actions";
 
 const initialState = {
     dogs: [],

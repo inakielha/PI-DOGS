@@ -8,6 +8,7 @@ export const SEARCH_TEMPER = "SEARCH_TEMPER"
 export const SEARCH_ID = "SEARCH_ID"
 export const POST_DOG = "POST_DOG"
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS"
+export const CLEAN_BY_ID = "CLEAN_BY_ID"
 
 
 export function getDogs() {
@@ -37,7 +38,8 @@ export function searchDog(search) {
                 console.log(dog.data)
             })
             .catch((error) => {
-             alert("This dog doesnt exist")   
+            //  alert("This dog doesnt exist")  
+            console.log(error) 
             })
     }
 }
