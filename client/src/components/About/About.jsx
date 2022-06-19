@@ -3,8 +3,7 @@ import style from "./About.module.css"
 import image from "./../../Assets/githubLogo.png"
 import imageMail from "./../../Assets/gmailLogo.png"
 import imageLinkedin from "./../../Assets/linkedinLogo.png"
-
-
+import imageHuella from "./../../Assets/dog-footprint.png"
 
 export default function About() {
     return (
@@ -43,6 +42,7 @@ export default function About() {
 
                     </div>
                     <p className={style.listChange2}>Thank you very much for visiting my website!</p>
+                    <img className={style.image2} src={imageHuella} alt="huella" />
             </div>
         </div>
     )
