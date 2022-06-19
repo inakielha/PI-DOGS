@@ -3,11 +3,17 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+const { application } = require('express');
 
 require('./db.js');
-
+const nodemailer = require ("nodemailer")
 const server = express();
 
+// server.post("/send-email",(req,res)=>{
+//   console.log("Email enviado")
+// });
+
+server
 server.name = 'API';
 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));

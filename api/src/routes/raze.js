@@ -11,6 +11,7 @@ router.get("/", async (req, res, next) => {
     try {
         let response = await axios(`https://api.thedogapi.com/v1/breeds/`)
         let dogs = response.data
+        console.log("hola")
 
         let razeDB = await Raze.findAll({
             include: Temper
@@ -82,19 +83,29 @@ router.get("/", async (req, res, next) => {
         next(e)
     }
 })
+router.post("/sendEmail",async(req,res,next)=>{
+    try {
+        console.log("hola")
+        res.json("hola")
+    } catch (e) {
+        console.log(e)
+    }
+})
 router.post("/", async (req, res, next) => {
     try {
         const { name, heightMin, heightMax, weightMin, weightMax, lifeSpanFrom, lifeSpanTo, img, temperament } = req.body
         if (!name || !heightMin || !heightMax || !weightMin || !weightMax) res.json("Missing information");
-
+        console.log(lifeSpanFrom)
+        console.log(lifeSpanTo)
         const result = await axios(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
         const dogs = result.data
 
 
         if (dogs.length) return res.status(400).json({ error: "This dog already exist" })
         const height = heightMin + " - " + heightMax
-        const weight = weightMin + " - " + weightMax
-        const lifeSpan = lifeSpanFrom + " - " + lifeSpanTo
+        const weight = weightMin + " - " + weightMax 
+        const lifeSpan = lifeSpanFrom === "" ? " Life span unknown" : lifeSpanFrom + " - " + lifeSpanTo + " years";
+        
         const doggy = await Raze.create({
             height, weight, lifeSpan, img, name
 
@@ -174,24 +185,32 @@ router.get("/:idRaza", async (req, res, next) => {
         next(e)
     }
 })
-
-// router.delete("/", async (req, res, next) =>{
-//     try {
-//         const {name} = req.query
-//         console.log(name)
-//         if (name){
-//             let verificarDB = await Raze.destroy({
-//                 where: {
-//                     name: name
-//                 }
-//             })
-//             if (verificarDB===1) res.json("The dog has been succesfully delete")
-//             if (!verificarDB) res.json("we couldnt find your doggy")
-//         }
-//         res.status(404).json("Name is require")
-//     } catch (error){
-//         console.log(error)
+// router.put("/", async (req,res,next)=>{
+//     try{
+//     const { name, heightMin, heightMax, weightMin, weightMax, lifeSpanFrom, lifeSpanTo, img, temperament } = req.body
+//     let dogChange = await Raze.update({
+        
+//     })
 //     }
 // })
+
+router.delete("/", async (req, res, next) =>{
+    try {
+        const {name} = req.query
+        console.log(name)
+        if (name){
+            let verificarDB = await Raze.destroy({
+                where: {
+                    name: name
+                }
+            })
+            if (verificarDB===1) res.json("The dog has been succesfully delete")
+            if (!verificarDB) res.json("we couldnt find your doggy")
+        }
+        res.status(404).json("Name is require")
+    } catch (error){
+        console.log(error)
+    }
+})
 
 module.exports = router;
