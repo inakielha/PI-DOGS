@@ -4,7 +4,8 @@ import { Link, useNavigate, } from "react-router-dom"
 import validate from "../../constantes/validate"
 import { getTemperaments, postDog } from "../../store/actions"
 import { Contenedor, h1, h1Class, form, block, label, ul, error, inputw, boke, optionn, Btn } from "./CreateDog.module.css"
-    
+import axios from "axios"
+import Navbar from "../PrincipalRoute/Navbar/Navbar"
 
 export default function CreateDog() {
     const dispatch = useDispatch()
@@ -15,6 +16,7 @@ export default function CreateDog() {
     const [errors, setErrors] = useState("");
 
     const [disabled, setDisabled] = useState(true)
+
 
     const [input, setInput] = useState({
         name: "",
@@ -27,6 +29,14 @@ export default function CreateDog() {
         img: "",
         temperament: []
     })
+    function handleDeleteBtn(e) {
+        let res = input.temperament.filter(temp => temp !== e.target.name)
+        setInput({
+            ...input,
+            temperament: res
+        })
+    }
+
 
     function handleInput(e) {
         setInput({
@@ -41,10 +51,13 @@ export default function CreateDog() {
     }
 
     function handleSelect(e) {
-        setInput({
-            ...input,
-            temperament: [...input.temperament, e.target.value]
-        })
+        if (input.temperament.indexOf(e.target.value) === -1) {
+
+            setInput({
+                ...input,
+                temperament: [...input.temperament, e.target.value]
+            })
+        }
     }
 
     function handleSubmit(e) {
@@ -90,7 +103,8 @@ export default function CreateDog() {
     return (
         <div>
 
-            <Link to="/home"><button className={Btn}>Go Back</button></Link>
+            {/* <Link to="/home"><button className={Btn}>Go Back</button></Link> */}
+            <Navbar/>
             <div className={Contenedor}>
                 <div className={h1}>
                     <h1 className={h1Class}>Create new Doggy</h1>
@@ -209,7 +223,12 @@ export default function CreateDog() {
                                 <option className={optionn} key={temp.id} value={temp.name}>{temp.name}</option>
                             ))}
                         </select>
-                        <ul><li className={ul}>{input.temperament.map(temp => temp + ", ")}</li></ul>
+                        <ul>
+                            <li className={ul}>{input.temperament.map(temp => <li> {temp}
+                                <button type="button" name={temp} onClick={(e) => handleDeleteBtn(e)}>X</button>
+                            </li>)}
+                            </li>
+                        </ul>
                     </div>
 
                     <button type="submit" className={block} disabled={disabled}>Create Dog </button>

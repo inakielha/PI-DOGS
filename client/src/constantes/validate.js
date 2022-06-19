@@ -5,8 +5,6 @@ export default function validate(input) {
     const errors = {};
     const regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     const validateURL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
-    console.log(input)
-    console.log(Number(input.heightMax))
 
     if (!input.name) {
         errors.name = "Name is require"
@@ -18,8 +16,8 @@ export default function validate(input) {
         errors.heightMin = "Height is require"
     }
     else if (input.heightMin != Number(input.heightMin)) errors.heightMin = "Height must be a number"
-    else if (input.heightMin > 90) errors.heightMin = "its not possible that Min height"
-    else if (input.heightMin <= 5) errors.heightMin = "its not possible that Min height"
+    else if (input.heightMin > 90) errors.heightMin = "its not possible that Min height, has to be lower than 90"
+    else if (input.heightMin <= 5) errors.heightMin = "its not possible that Min height, has to be greater than 5"
     else if (Number(input.heightMin[0]) === 0) errors.heightMin = "this value cant start with 0"
     else if (input.heightMin >= 10 && input.heightMin.length >= 6) errors.heightMin = "Only include two decimals"
     else if (input.heightMin < 10 && input.heightMin.length > 4) errors.heightMin = "Only include two decimals"
@@ -29,8 +27,8 @@ export default function validate(input) {
         errors.heightMax = "Maximum height is require"
     }
     else if (input.heightMax != Number(input.heightMax)) errors.heightMax = "Height must be a number"
-    else if (input.heightMax > 104) errors.heightMax = "its not possible that Max height"
-    else if (input.heightMax < 30) errors.heightMax = "its not possible that Max height"
+    else if (input.heightMax > 104) errors.heightMax = "Max height has to be lower than 104"
+    else if (input.heightMax < 30) errors.heightMax = "Max height has to be greater than 30"
     else if (Number(input.heightMax[0]) === 0) errors.heightMax = "this value cant start with 0"
     else if (input.heightMax < 100 && input.heightMax.length >= 6) errors.heightMax = "Only include two decimals"
     else if (input.heightMax >= 100 && input.heightMax.length >= 7) errors.heightMax = "Only include two decimals"
@@ -80,6 +78,5 @@ export default function validate(input) {
         if (!validateURL.test(input.img)) errors.img = "the image require a URL format"
     }
 
-    console.log(errors)
     return errors
 }

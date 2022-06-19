@@ -1,5 +1,15 @@
-
-
+.popi {
+    display: flex;
+    border-bottom: 2px solid  black;
+    justify-content: space-between;
+    margin: 0px 20px 0px 20px;
+    padding-top: 40px;
+    color: #000;
+    background-color: #fff;
+}
+.perri {
+    margin-top: 50px;
+}
 
 .Btn {
     width: 120px;

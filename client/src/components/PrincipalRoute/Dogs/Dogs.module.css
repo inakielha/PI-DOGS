@@ -2,26 +2,37 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    grid-column: 1/3;
 }
 .Doggys{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        text-align: center;
-        
+        text-align: center;      
 }
 .Btn {
     width: 200px;
     height: 50px;
     border-radius: 5vh;
     margin-left: 2px;
-    background-color: #f0d16a44;
+    background-color: #fff;
     position: relative;
     /* right: 75px;*/
-    bottom: -20px;
+    /* bottom: -20px; */
     cursor: pointer; 
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .hh2 {
-    color: #e76;
+    margin-top: 10px;
+    background-color: #dad7cd;
+    border-radius: 5vh;
+    justify-content: center;
+    margin-left: 25%;
+    text-align: center;
+    width: 45%;
+    /* color: #e76; */
+    color: #000;
     grid-column: 1/3;
     font-size: 25px;
+    font-weight: 800;
 }

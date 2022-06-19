@@ -3,7 +3,7 @@ import { searchDog } from "../../../store/actions";
 import { useDispatch } from "react-redux";
 import style from "./InputBusqueda.module.css"
 
-export default function InputBusqueda(){
+export default function InputBusqueda({setCurrentPage,currentPage}){
 
     const[datos,setDatos] = useState("")
 
@@ -14,6 +14,7 @@ export default function InputBusqueda(){
     const sendData = (event) =>{
         event.preventDefault();
         dispatch(searchDog(datos))
+        setCurrentPage(1)
     }
     return (
         <div className="">

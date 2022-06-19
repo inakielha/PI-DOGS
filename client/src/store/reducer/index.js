@@ -1,5 +1,5 @@
 import { ASCENDENTE } from "../../constantes/sort";
-import { cleanByid, CLEAN_BY_ID, GET_DOGS, GET_TEMPERAMENTS, POST_DOG, SEARCH_DOG, SEARCH_ID, SEARCH_TEMPER, SORT, SORT_WEIGHT } from "../actions";
+import { GET_DB_DOGS, GET_DOGS, GET_TEMPERAMENTS, POST_DOG, SEARCH_DOG, SEARCH_ID, SEARCH_TEMPER, SORT, SORT_WEIGHT } from "../actions";
 
 const initialState = {
     dogs: [],
@@ -7,8 +7,9 @@ const initialState = {
     filterDogs: [],
     newDogs: [],
     dogById: [],
-    getAllTemperaments:[],
-    searchError: []
+    getAllTemperaments: [],
+    searchError: [],
+    dogsOrigin: []
 }
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -24,7 +25,7 @@ export default function reducer(state = initialState, action) {
                 filterDogs: action.payload
             }
         case SORT:
-            let orderedDogs = [...state.dogs];
+            let orderedDogs = [...state.filterDogs];
             orderedDogs = orderedDogs.sort((a, b) => {
                 if (a.name < b.name) {
                     return action.payload === ASCENDENTE ? -1 : 1;
@@ -41,7 +42,7 @@ export default function reducer(state = initialState, action) {
         case SORT_WEIGHT:
             let orderedWeight = [];
             let arrNaN = [];
-            let arr = [...state.dogs];
+            let arr = [...state.filterDogs];
             arr.forEach(ele => {
                 if (ele.weight.indexOf("NaN") === -1) orderedWeight.push(ele)
                 else arrNaN.push(ele)
@@ -49,7 +50,6 @@ export default function reducer(state = initialState, action) {
             orderedWeight = orderedWeight.sort((a, b) => {
                 let splitWeightA = a.weight.split("- ")
                 let weightPromA = splitWeightA[(splitWeightA.length) - 1]
-                console.log(weightPromA)
 
                 let splitWeightB = b.weight.split("- ")
                 let weightPromB = splitWeightB[(splitWeightB.length) - 1]
@@ -97,6 +97,28 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 getAllTemperaments: action.payload
             }
+        case GET_DB_DOGS:
+            let allDogs = [...state.dogs];
+            let resp = []
+            if (action.payload === "dbDogs") {
+                allDogs.forEach(dog => {
+                    if (dog.id.length > 6) resp.push(dog)
+                })
+            }
+            else if (action.payload === "apiDogs") {
+
+                allDogs.forEach(dog => {
+                    if (typeof(dog.id) === "number") resp.push(dog)
+                })
+            } else {
+                resp = allDogs;
+            }
+            if (!resp.length) resp = "NoUserDogs"
+            return {
+                ...state,
+                filterDogs: resp
+            }
+
         default:
             return state
     }

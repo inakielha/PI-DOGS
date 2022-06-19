@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 :root{
-  --primary-bg-color: #cad2c5;
-  --primary-font-color: #52796f;
+  --primary-bg-color: #F0F8FF;
+  --primary-font-color: #F0F8FF;
   font-family: 'Lato', sans-serif;
 }
 body{
   font-family: 'Lato', sans-serif;
-  background-color: var(--primary-bg-color);
+  background-image: url("Assets/Black_Animal_Paw_Pattern_generated.jpg") ;
+  /* background-repeat: no-repeat;
+  background-size: cover; */
 }
 .App {
   text-align: center;

@@ -5,6 +5,9 @@ import Dog from "../Dog/Dog";
 import Paginado from "../Paginado/Paginado";
 import { Link } from "react-router-dom";
 import style from "./Dogs.module.css"
+import InputBusqueda from "../InputBusqueda/InputBusqueda";
+import TemperSearch from "../TemperSearch/TemperSearch";
+
 
 export default function Dogs(props) {
 
@@ -25,7 +28,6 @@ export default function Dogs(props) {
         setbtn(
             !btn
         )
-        console.log(btn)
     }
 
     useEffect(() => {
@@ -34,44 +36,60 @@ export default function Dogs(props) {
     console.log(currentDogs)
 
     return (
-        <div className={style.Doggys}>
-            {typeof (currentDogs) === "object" && currentDogs.map((dog) => {
-                return (
-                    <div>
-                        <Dog key={dog.id} id={dog.id} temperament={dog.temperament} name={dog.name} img={dog.img} weight={dog.weight} />
-                    </div>
-                )
-            })}
-            <div className={style.hh2}>
-                {currentDogs.length === 0 &&
-                    <div className="">
-                        <h2 className=""> Loading...</h2>
-                    </div>
-                }
-            </div>
-            <div className={style.hh2}>
-                {currentDogs === "NoName" &&
+        <div>
+            <InputBusqueda
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage} />
+            <TemperSearch/>
 
-                    <div>
-                        <p className=""> We couldnt find your Dog </p>
-                        <button type="submit" onClick={(e) => handleBtn(e)} className={style.Btn}> Go Back </button>
-                    </div>
-                }
-            </div>
-            <div className={style.hh2}>
-                {currentDogs === "NoTemper" &&
-                    <div>
-                        <p className=""> We couldnt find a dog with this temper </p>
-                        <button onClick={(e)=> handleBtn(e)} className={style.Btn}> Go Back </button>
-                    </div>
-                }
-            </div>
-            <div className={style.PrimaryDiv}>
-                <Paginado
-                    dogsPerPage={dogsPerPage}
-                    allDogs={allDogs.length}
-                    paginado={paginado}
-                />
+            <div className={style.Doggys}>
+                {typeof (currentDogs) === "object" && currentDogs.map((dog) => {
+                    return (
+                        <div>
+                            <Dog key={dog.id} id={dog.id} temperament={dog.temperament} name={dog.name} img={dog.img} weight={dog.weight} />
+                        </div>
+                    )
+                })}
+                <div className={style.hh2}>
+                    {currentDogs.length === 0 &&
+                        <div className="">
+                            <h2 className=""> Loading...</h2>
+                        </div>
+                    }
+                </div>
+                <div className={style.hh2}>
+                    {currentDogs === "NoName" &&
+
+                        <div>
+                            <p className=""> We couldnt find your Dog </p>
+                            <button type="submit" onClick={(e) => handleBtn(e)} className={style.Btn}> Go Back </button>
+                        </div>
+                    }
+                </div>
+                <div className={style.hh2}>
+                    {currentDogs === "NoTemper" &&
+                        <div>
+                            <p className=""> We couldnt find a dog with this temper </p>
+                            <button onClick={(e) => handleBtn(e)} className={style.Btn}> Go Back </button>
+                        </div>
+                    }
+                </div>
+                <div className={style.hh2}>
+                    {currentDogs === "NoUserDo" &&
+                        <div>
+                            <p className="">We dont have dogs created by users </p>
+                            <button onClick={(e) => handleBtn(e)} className={style.Btn}> Go Back </button>
+                        </div>}
+                </div>
+                {(currentDogs === "NoUserDo" || currentDogs === "NoTemper" || currentDogs === "NoName" || currentDogs.length === 0) ? "" :
+                    <div className={style.PrimaryDiv}>
+                    <Paginado
+                        dogsPerPage={dogsPerPage}
+                        allDogs={allDogs.length}
+                        paginado={paginado}
+                        />
+                </div>
+                    }
             </div>
         </div>
     )

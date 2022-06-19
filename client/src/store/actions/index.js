@@ -9,7 +9,8 @@ export const SEARCH_ID = "SEARCH_ID"
 export const POST_DOG = "POST_DOG"
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS"
 export const CLEAN_BY_ID = "CLEAN_BY_ID"
-
+export const GET_DB_DOGS = "GET_DB_DOGS"
+export const DELETE_DOG = "DELETE_DOG"
 
 export function getDogs() {
     return function (dispatch) {
@@ -90,7 +91,6 @@ export function postDog(dogInfo) {
     return async function (dispatch) {
         try {
             const res = await axios.post("/dogs", dogInfo);
-            console.log(res)
             return res
         } catch (error) {
             console.log(error)
@@ -108,6 +108,25 @@ export function getTemperaments() {
             })
         } catch (error) {
             console.log(error)
+        }
+    }
+}
+export function getDbDogs (info){
+    return {
+        type: GET_DB_DOGS,
+        payload: info
+    }
+}
+export function deleteDog (name){
+    return async function (dispatch){
+        try {
+            const res = await axios.delete("/dogs?name=" + name)
+            return dispatch({
+                type: DELETE_DOG,
+                payload: res.data
+            })
+        }catch (e){
+            console.log(e)
         }
     }
 }

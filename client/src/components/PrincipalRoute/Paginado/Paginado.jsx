@@ -8,14 +8,14 @@ export default function Paginado({ dogsPerPage, allDogs, paginado }) {
         pageNumbers.push(i + 1)
     }
     return (
-        <div className={style.lista}>
-            <ul className="">
-                {pageNumbers && pageNumbers.map(number => (
-                    <li className="" key={number}>
-                        <a className="" onClick={() => paginado(number)}> -{number}- </a>
-                    </li>
-                ))}
-            </ul>
-        </div>
+            <div className={style.lista}>
+                <ul >
+                    {pageNumbers && pageNumbers.map(number => (
+                        <li  key={number}>
+                            <a onClick={() => paginado(number)}> -{number}- </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
     )
 }

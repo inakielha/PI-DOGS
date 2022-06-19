@@ -6,18 +6,25 @@ import TemperSearch from "./TemperSearch/TemperSearch";
 import WeightOrder from "./WeightOrder/WeightOrder";
 import { Link } from "react-router-dom";
 import style from "./PrincipalRoute.module.css"
+import DbDogs from "./DbDogs/DbDogs";
+import Navbar from "./Navbar/Navbar";
 
- export default function PrincipalRoute(){
-     return (
-         <div>
-             <h1 className="title">Welcome to our Doggy family!</h1>
-             <InputBusqueda />
-             <TemperSearch /> 
-             <AlphabeticalOrder /> 
-             <WeightOrder />
-             <Link to="/createDog"><button className={style.Btn}>Create New Doggy</button></Link>
-             <Paginado/>
-             <Dogs/>
-         </div>
-     )
- }
+export default function PrincipalRoute() {
+    return (
+        <div>
+            <Navbar/>
+                {/* <h1 className="title">Welcome to our Doggy family!</h1> */}
+            <div className={style.popi}>
+                {/* <TemperSearch /> */}
+                <DbDogs />
+                <AlphabeticalOrder />
+                <WeightOrder />
+                {/* <Link to="/createDog"><button className={style.Btn}>Create New Doggy</button></Link> */}
+            </div>
+            <div className={style.perri}>
+            <Paginado />
+            <Dogs />
+            </div>
+        </div>
+    )
+}

@@ -1,16 +1,21 @@
 .InfoDiv{
     display: flex;
     flex-direction: column;
-    color: var(--primary-font-color);
+    color: #000;
     font-weight: bold;
-    text-shadow: 0.3vh 0.3vh 0.4vh #f0d16a;
+    text-shadow: 0.3vh 0.3vh 0.4vh #dad7cd;
     align-items: center;
 }
+.center {
+    margin-left: -67px;
+}
 .powBobi{
-    background-color: #f0d16a94;
-    width: 50%;
+    background-color: #dad7cd;
+    width: 120%;
     border-radius: 5vh;
-    margin-top: 40px;
+    margin-top: 30px;
+    margin-left: 0px;
+    padding: 20px 10px 
 }
 .DogImg{
     width: 50vh;
@@ -18,10 +23,18 @@
     overflow: hidden;
     border-radius: 5vh;
 }
+.boton {
+    border-radius: 5vh;
+    background-color: #dad7cd;
+    border:solid 2px transparent;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+}
 
 
 .Btns{
-    background-color: antiquewhite;
+    background-color: #dad7cd;
     font-weight: 700;
     border: solid 2px transparent;
     border-radius: 5vh;
@@ -31,5 +44,8 @@
     position: relative;
     margin-top: 10px;
     padding: 20px ;
+    text-decoration: none;
+}
+.links {
     text-decoration: none;
 }

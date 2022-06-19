@@ -3,22 +3,20 @@
     margin-right: auto;
     width: 70%;
     border-radius: 5vh;
-    background-color: #f0d16a44;
+    background-color: #dad7cd;
     margin-top: 25px;
 }
 .h1 {
     border-bottom: 2px solid #fff;
-
 }
 .block{
     grid-column: 1/3;
     padding: 8px 0px;
-    cursor: pointer;
 }
 .h1Class {
     text-align: center;
     text-transform: uppercase;
-    color: #52796f;
+    color: #000;
     padding-top: 25px;
 }
 
@@ -31,7 +29,7 @@
     display: block;
     font-size: 20px;
     margin: 5px 0px;
-    color: #52796f;
+    color: #000;
 }
 
 .select {
@@ -43,7 +41,7 @@
 }
 .ul {
     list-style: none;
-    color: #52796f;
+    color: #000;
 }
 .error {
     color: #e76f51;
@@ -54,7 +52,7 @@
     outline: 0px;
     background: none;
     border-bottom: 2px solid #fff ;
-    color: #52796f;
+    color: #000;
     outline: none;
 }
 .boke {

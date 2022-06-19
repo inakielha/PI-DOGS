@@ -1,13 +1,18 @@
+
 .lista {
-	display: flex;
-	position: absolute;
-	left: 10%;
+background-color: #000;
+width: 100%;
+margin-top: 25px;
+color: #fff;
 }
 .lista li {
 	display: inline;
 	padding: 0px 10px;
     cursor: pointer;
+	font-weight: 800;
+	width: 100%;
 }
 .lista li a:hover {
-	color: white;
+	text-align: center;
+	color: #7c7c79;
 }
