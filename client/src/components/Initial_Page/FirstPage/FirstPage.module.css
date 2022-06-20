@@ -1,7 +1,9 @@
 .divs {
-    width: 1366px;
-    height: 661px;
+    /* width: 100vh; */
+    height: 100vh;
     background: url(../../../Assets/anoir-chafik-2_3c4dIFYFU-unsplash.jpg) no-repeat center/cover;
+    /* background-size: 100%;
+    z-index: 100; */
 }
 .btn {
 position: absolute;
