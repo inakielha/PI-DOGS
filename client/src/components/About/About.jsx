@@ -32,7 +32,7 @@ export default function About() {
                             <p className={style.link}> Iñaki Elhaiek</p>
                         </a>
                         <a className={style.link} href="https://github.com/inakielha" target="_blank" rel="noopener noreferrer">
-                            <img className={style.image2} src={image} alt="gitHub" />
+                            <img className={style.image} src={image} alt="gitHub" />
                             <p className={style.link}> inakielha</p>
                         </a>
                         <div className={style.link2}>
