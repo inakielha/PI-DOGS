@@ -31,7 +31,7 @@
     margin-top: 30x;
     border-top: 2px solid #fff;
     width: 50%;
-    margin-left: 220px;
+    margin-left: 15vw;
     /* padding-bottom: 15px; */
     padding-top: 30px;
 }
@@ -41,6 +41,7 @@
     color: rgb(104, 101, 101);
     font-weight: 500;
     font-size: 20px;
+    margin-right: 2vw;
 }
 .listPe {
   margin-bottom: 10px;
@@ -48,6 +49,8 @@
   color: rgb(104, 101, 101);
   font-weight: 500;
   font-size: 20px;
+  margin-right: 2vw;
+
 }
 .listPa {
     border-top: 2px solid #fff;
@@ -67,7 +70,7 @@
   /* margin-top: 50x; */
   border-top: 2px solid #fff;
   width: 50%;
-  margin-left: 250px;
+  margin-left: 17.5vw;
   padding-bottom: 15px;
   padding-top: 50px;
 }
@@ -78,7 +81,7 @@
   /* margin-top: 50x; */
   border-top: 2px solid #fff;
   width: 50%;
-  margin-left: 250px;
+  margin-left: 17.5vw;
   padding-bottom: 15px;
   padding-top: 50px;
 }
@@ -86,12 +89,13 @@
   width: 80%;
   display: flex;
   /* justify-content: center; */
-  margin-left: 105px;
+  margin-left: 7vw;
   padding-top: 20px;
 }
   .image {
     width: 20%;
-    margin-left: 0px;
+    /* size: 20vh; */
+    /* margin-left: 0px; */
   }
   .image2 {
     width: 22%;
