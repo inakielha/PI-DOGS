@@ -22,6 +22,12 @@ export default function Dogs(props) {
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
+        window.scrollTo({
+            top: 0, 
+            behavior: 'smooth'
+            /* you can also use 'auto' behaviour
+               in place of 'smooth' */
+          });
     }
     function handleBtn(e) {
         e.preventDefault();
