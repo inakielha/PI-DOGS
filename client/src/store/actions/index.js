@@ -11,6 +11,7 @@ export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS"
 export const CLEAN_BY_ID = "CLEAN_BY_ID"
 export const GET_DB_DOGS = "GET_DB_DOGS"
 export const DELETE_DOG = "DELETE_DOG"
+export const CLEAN_RESPONSE = "CLEAN_RESPONSE"
 
 export function getDogs() {
     return function (dispatch) {
@@ -91,10 +92,26 @@ export function postDog(dogInfo) {
     return async function (dispatch) {
         try {
             const res = await axios.post("/dogs", dogInfo);
-            return res
+            console.log(res.data)
+            return dispatch({
+                type: POST_DOG,
+                payload:{ok:res.data.ok}
+            }) 
         } catch (error) {
-            console.log(error)
+            return dispatch({
+                type: POST_DOG,
+                payload:{ok:error.response.data.ok,
+                    msg: error.response.data.msg}
+            }) 
         }
+    }
+}
+export function cleanResponse(){
+    return async function(dispatch){
+        return dispatch({
+            type: CLEAN_RESPONSE,
+            payload: {ok:false}
+        })
     }
 }
 

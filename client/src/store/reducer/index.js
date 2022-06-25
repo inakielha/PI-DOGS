@@ -1,5 +1,5 @@
 import { ASCENDENTE } from "../../constantes/sort";
-import { GET_DB_DOGS, GET_DOGS, GET_TEMPERAMENTS, POST_DOG, SEARCH_DOG, SEARCH_ID, SEARCH_TEMPER, SORT, SORT_WEIGHT } from "../actions";
+import { CLEAN_RESPONSE, GET_DB_DOGS, GET_DOGS, GET_TEMPERAMENTS, POST_DOG, SEARCH_DOG, SEARCH_ID, SEARCH_TEMPER, SORT, SORT_WEIGHT } from "../actions";
 
 const initialState = {
     dogs: [],
@@ -9,7 +9,8 @@ const initialState = {
     dogById: [],
     getAllTemperaments: [],
     searchError: [],
-    dogsOrigin: []
+    dogsOrigin: [],
+    dogCreated: {ok:""}
 }
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -90,7 +91,13 @@ export default function reducer(state = initialState, action) {
             }
         case POST_DOG:
             return {
-                ...state
+                ...state,
+                dogCreated: action.payload
+            }
+        case CLEAN_RESPONSE:
+            return {
+                ...state,
+                dogCreated: action.payload
             }
         case GET_TEMPERAMENTS:
             return {

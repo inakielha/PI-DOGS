@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate, } from "react-router-dom"
 import validate from "../../constantes/validate"
-import { getTemperaments, postDog } from "../../store/actions"
-import { Contenedor, h1, h1Class, form, block, label, ul, error, inputw, boke, optionn, Btn } from "./CreateDog.module.css"
+import { cleanResponse, getTemperaments, postDog } from "../../store/actions"
+import { Contenedor, h1, h1Class, form, block, label, ul, error, inputw, boke, optionn, errorMsg, errorDiv } from "./CreateDog.module.css"
 import axios from "axios"
 import Navbar from "../PrincipalRoute/Navbar/Navbar"
 
 export default function CreateDog() {
     const dispatch = useDispatch()
+    const dogRes = useSelector((state)=> state.dogCreated)
     const allTemperaments = useSelector((state) => state.getAllTemperaments)
-
+    console.log(dogRes)
     const backToHome = useNavigate()
 
     const [errors, setErrors] = useState("");
@@ -29,6 +30,7 @@ export default function CreateDog() {
         img: "",
         temperament: []
     })
+    
     function handleDeleteBtn(e) {
         let res = input.temperament.filter(temp => temp !== e.target.name)
         setInput({
@@ -36,7 +38,7 @@ export default function CreateDog() {
             temperament: res
         })
     }
-
+    
 
     function handleInput(e) {
         setInput({
@@ -49,28 +51,23 @@ export default function CreateDog() {
         }
         ))
     }
-
+    
     function handleSelect(e) {
         if (input.temperament.indexOf(e.target.value) === -1) {
-
+            
             setInput({
                 ...input,
                 temperament: [...input.temperament, e.target.value]
             })
         }
     }
-
+    
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("soy input")
-        console.log(input)
-        console.log("soy error")
-        console.log(errors)
-
+        
         if (!errors.name && !errors.weightMin && !errors.weightMax && !errors.heightMin && !errors.heightMax && !errors.lifeSpanFrom && !errors.lifeSpanTo && !errors.img) {
-
+            
             dispatch(postDog(input))
-            alert("There is a new Doggy in town!")
             setInput({
                 name: "",
                 heightMin: "",
@@ -82,21 +79,29 @@ export default function CreateDog() {
                 img: "",
                 temperament: []
             })
-            backToHome("/home");
         } else {
             alert("Missing or wrong information, check it please")
         }
     }
-
-
+    if(dogRes.ok){
+        backToHome("/home");
+        // alert("There is a new doggy in town")
+    }
+    
+    
     useEffect(() => {
-        dispatch(getTemperaments())
+        dispatch(cleanResponse())
         if (input.name && input.weightMin && input.weightMax && input.heightMin && input.heightMax && !errors.name && !errors.weightMin && !errors.weightMax && !errors.heightMin && !errors.heightMax && !errors.lifeSpanFrom && !errors.lifeSpanTo && !errors.img) {
             setDisabled(false)
         } else {
             setDisabled(true)
         }
     }, [input, errors]);
+    
+    useEffect(()=>{
+        dispatch(cleanResponse())
+        dispatch(getTemperaments())
+    },[])
 
 
 
@@ -230,6 +235,7 @@ export default function CreateDog() {
                             </li>
                         </ul>
                     </div>
+                    {!dogRes.ok && dogRes.msg && <div className={errorDiv}><p className={errorMsg}>{dogRes.msg}</p></div>}
 
                     <button type="submit" className={block} disabled={disabled}>Create Dog </button>
                 </form>
