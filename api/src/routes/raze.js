@@ -94,14 +94,17 @@ router.post("/sendEmail",async(req,res,next)=>{
 router.post("/", async (req, res, next) => {
     try {
         const { name, heightMin, heightMax, weightMin, weightMax, lifeSpanFrom, lifeSpanTo, img, temperament } = req.body
-        if (!name || !heightMin || !heightMax || !weightMin || !weightMax) res.json("Missing information");
+        if (!name || !heightMin || !heightMax || !weightMin || !weightMax) return res.status(400).json("Missing information");
         console.log(lifeSpanFrom)
         console.log(lifeSpanTo)
         const result = await axios(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
         const dogs = result.data
+        const searchDbName = await Raze.findOne({where:{name:name}})
+        console.log(searchDbName)
 
+        if (searchDbName !== null) return res.status(400).json({ok:false,msg:"This dog name already exist"})
 
-        if (dogs.length) return res.status(400).json({ error: "This dog already exist" })
+        if (dogs.length) return res.status(400).json({ ok: false, msg: "This dog already exist" })
         const height = heightMin + " - " + heightMax
         const weight = weightMin + " - " + weightMax 
         const lifeSpan = lifeSpanFrom === "" ? " Life span unknown" : lifeSpanFrom + " - " + lifeSpanTo + " years";
@@ -128,9 +131,10 @@ router.post("/", async (req, res, next) => {
             })
 
         }
-        res.json(doggy)
+        return res.status(200).json({ok:true, msg:doggy})
     } catch (e) {
-        next(e)
+        console.log(e)
+        res.status(400).json({ok:false,msg:"you cant create this dog"})
     }
 })
 
