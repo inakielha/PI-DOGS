@@ -37,7 +37,6 @@ export function searchDog(search) {
                     type: SEARCH_DOG,
                     payload: dog.data
                 })
-                console.log(dog.data)
             })
             .catch((error) => {
             //  alert("This dog doesnt exist")  
@@ -53,7 +52,6 @@ export function searchTemper(search) {
                     type: SEARCH_TEMPER,
                     payload: dog.data
                 })
-                console.log(dog.data)
             })
             .catch((error) => {
                 console.log(error)

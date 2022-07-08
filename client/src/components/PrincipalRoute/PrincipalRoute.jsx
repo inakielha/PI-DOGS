@@ -13,13 +13,10 @@ export default function PrincipalRoute() {
     return (
         <div>
             <Navbar/>
-                {/* <h1 className="title">Welcome to our Doggy family!</h1> */}
             <div className={style.popi}>
-                {/* <TemperSearch /> */}
                 <DbDogs />
                 <AlphabeticalOrder />
                 <WeightOrder />
-                {/* <Link to="/createDog"><button className={style.Btn}>Create New Doggy</button></Link> */}
             </div>
             <div className={style.perri}>
             <Paginado />

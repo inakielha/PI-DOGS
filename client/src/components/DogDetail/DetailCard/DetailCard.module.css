@@ -1,39 +1,45 @@
-.InfoDiv{
+.InfoDiv {
+    width: 100%;
     display: flex;
     flex-direction: column;
     color: #000;
     font-weight: bold;
     text-shadow: 0.3vh 0.3vh 0.4vh #dad7cd;
     align-items: center;
+    justify-content: center;
 }
+
 .center {
-    margin-left: -67px;
+    margin: auto;
 }
-.powBobi{
+
+.powBobi {
     background-color: #dad7cd;
-    width: 120%;
+    width: 100%;
     border-radius: 5vh;
     margin-top: 30px;
     margin-left: 0px;
-    padding: 20px 10px 
+    padding: 20px 10px
 }
-.DogImg{
+
+.DogImg {
     width: 50vh;
     height: 40vh;
     overflow: hidden;
     border-radius: 5vh;
 }
+
 .boton {
     border-radius: 5vh;
     background-color: #dad7cd;
-    border:solid 2px transparent;
+    border: solid 2px transparent;
     cursor: pointer;
     font-size: 15px;
     font-weight: 700;
 }
 
 
-.Btns{
+.Btns {
     background-color: #dad7cd;
     font-weight: 700;
     border: solid 2px transparent;
@@ -43,9 +49,25 @@
     align-items: center;
     position: relative;
     margin-top: 10px;
-    padding: 20px ;
+    padding: 20px;
     text-decoration: none;
 }
+
 .links {
+    margin: auto;
     text-decoration: none;
+}
+
+@media only screen and (max-width: 408px) {
+    .center{
+        margin: auto 20% ;
+    }
+    .powBobi {
+        width: 100%;
+    }
+
+    .DogImg {
+        width: 40vh;
+        height: 30vh;
+    }
 }

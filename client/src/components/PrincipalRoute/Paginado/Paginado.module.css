@@ -16,3 +16,8 @@ color: #fff;
 	text-align: center;
 	color: #7c7c79;
 }
+@media only screen and (max-width:589px){
+    .lista ul {
+		text-align: left;
+	}
+}

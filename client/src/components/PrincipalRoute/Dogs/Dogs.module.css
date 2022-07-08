@@ -1,13 +1,23 @@
-.PrimaryDiv{
-    display: flex;
-    justify-content: space-between;
+.container {
     width: 100%;
-    grid-column: 1/3;
+    margin: auto;
+    align-items: center;
+}
+.PrimaryDiv{
+    max-width: initial;
+    display: flex;
+    justify-content: left;
+    align-items:center;
+    width: 100%;
+    margin: 0px;
 }
 .Doggys{
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        text-align: center;      
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: center;
+        align-items:flex-start; 
+        gap: 25px;
+        margin: 2%  
 }
 .Btn {
     width: 200px;
@@ -35,4 +45,20 @@
     grid-column: 1/3;
     font-size: 25px;
     font-weight: 800;
+}
+
+@media only screen and (max-width:992px) {
+    .Doggys{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items:flex-start; 
+        gap: 25px;
+        /* margin: 20px   */
+}
+}
+@media only screen and (max-width:480px){
+    .Doggys{
+        grid-template-columns: repeat(1, 1fr); 
+    }
 }

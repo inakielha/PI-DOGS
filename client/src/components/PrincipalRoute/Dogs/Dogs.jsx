@@ -23,11 +23,11 @@ export default function Dogs(props) {
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
         window.scrollTo({
-            top: 0, 
+            top: 0,
             behavior: 'smooth'
             /* you can also use 'auto' behaviour
                in place of 'smooth' */
-          });
+        });
     }
     function handleBtn(e) {
         e.preventDefault();
@@ -39,14 +39,13 @@ export default function Dogs(props) {
     useEffect(() => {
         dispatch(getDogs())
     }, [btn])
-    console.log(currentDogs)
 
     return (
-        <div>
+        <div className={style.container}>
             <InputBusqueda
                 setCurrentPage={setCurrentPage}
                 currentPage={currentPage} />
-            <TemperSearch/>
+            <TemperSearch />
 
             <div className={style.Doggys}>
                 {typeof (currentDogs) === "object" && currentDogs.map((dog) => {
@@ -56,6 +55,7 @@ export default function Dogs(props) {
                         </div>
                     )
                 })}
+            </div>
                 <div className={style.hh2}>
                     {currentDogs.length === 0 &&
                         <div className="">
@@ -89,14 +89,13 @@ export default function Dogs(props) {
                 </div>
                 {(currentDogs === "NoUserDo" || currentDogs === "NoTemper" || currentDogs === "NoName" || currentDogs.length === 0) ? "" :
                     <div className={style.PrimaryDiv}>
-                    <Paginado
-                        dogsPerPage={dogsPerPage}
-                        allDogs={allDogs.length}
-                        paginado={paginado}
+                        <Paginado
+                            dogsPerPage={dogsPerPage}
+                            allDogs={allDogs.length}
+                            paginado={paginado}
                         />
-                </div>
-                    }
-            </div>
+                    </div>
+                }
         </div>
     )
 }

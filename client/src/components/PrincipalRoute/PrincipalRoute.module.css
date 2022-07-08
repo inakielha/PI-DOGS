@@ -2,13 +2,15 @@
     display: flex;
     border-bottom: 2px solid  black;
     justify-content: space-between;
-    margin: 0px 20px 0px 20px;
+    /* align-items: center; */
     padding-top: 40px;
     color: #000;
     background-color: #fff;
+    width: 100%;
 }
 .perri {
     margin-top: 50px;
+    width: 100%;
 }
 
 .Btn {
@@ -22,3 +24,24 @@
     margin-top: 15px;
     cursor: pointer;
 }
+/* @media (min-width: 481px) and (max-width:992px){
+    .popi{
+        flex-direction: column;
+        margin: auto;
+        width: 100%;
+    }
+    } */
+@media only screen and (max-width:753px){
+.popi{
+    /* max-width: 480px; */
+    /* margin: auto; */
+    /* margin-left: 1%; */
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    gap: 20px;
+}
+}
+/* @media only screen and (max-width:589px){
+    
+} */

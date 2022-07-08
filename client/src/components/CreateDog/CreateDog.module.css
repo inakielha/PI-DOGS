@@ -5,6 +5,7 @@
     border-radius: 5vh;
     background-color: #dad7cd;
     margin-top: 25px;
+    margin-bottom: 2%;
 }
 .h1 {
     border-bottom: 2px solid #fff;
@@ -12,6 +13,7 @@
 .block{
     grid-column: 1/3;
     padding: 8px 0px;
+    border-radius: 5vh;
 }
 .h1Class {
     text-align: center;
@@ -87,4 +89,23 @@
     text-align: center;
     font-size: 5vh;
     color: black;
+}
+@media only screen and (max-width:687px){
+    .Contenedor{
+        width: 90%;
+    }
+}
+@media only screen and (max-width:479px){
+    .Contenedor{
+        width: 95%;
+    }
+    /* .form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: center;
+    } */
+    .form {
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -6,7 +6,7 @@ export default function Navbar(){
     return (
         <nav className={style.p}>
             <div>
-                <h2 className={style.h2} >Welcome to our Doggy family! </h2>
+                <h2 className={style.text} >Welcome to our Doggy family! </h2>
             </div>
             <div className={style.about}>
                 <Link className={style.j} to= '/home'>Home</Link>
