@@ -56,46 +56,56 @@ export default function Dogs(props) {
                     )
                 })}
             </div>
+            <div className={style.hh2Container}>
+
                 <div className={style.hh2}>
                     {currentDogs.length === 0 &&
-                        <div className="">
+                        <div className={style.error}>
                             <h2 className=""> Loading...</h2>
                         </div>
                     }
                 </div>
+            </div>
+            <div className={style.hh2Container}>
                 <div className={style.hh2}>
                     {currentDogs === "NoName" &&
-
-                        <div>
+                        <div className={style.error}>
                             <p className=""> We couldnt find your Dog </p>
                             <button type="submit" onClick={(e) => handleBtn(e)} className={style.Btn}> Go Back </button>
                         </div>
                     }
                 </div>
+            </div>
+            <div className={style.hh2Container}>
+
                 <div className={style.hh2}>
                     {currentDogs === "NoTemper" &&
-                        <div>
+                        <div className={style.error}>
                             <p className=""> We couldnt find a dog with this temper </p>
                             <button onClick={(e) => handleBtn(e)} className={style.Btn}> Go Back </button>
                         </div>
                     }
                 </div>
+            </div>
+            <div className={style.hh2Container}>
+
                 <div className={style.hh2}>
                     {currentDogs === "NoUserDo" &&
-                        <div>
+                        <div className={style.error}>
                             <p className="">We dont have dogs created by users </p>
                             <button onClick={(e) => handleBtn(e)} className={style.Btn}> Go Back </button>
                         </div>}
                 </div>
-                {(currentDogs === "NoUserDo" || currentDogs === "NoTemper" || currentDogs === "NoName" || currentDogs.length === 0) ? "" :
-                    <div className={style.PrimaryDiv}>
-                        <Paginado
-                            dogsPerPage={dogsPerPage}
-                            allDogs={allDogs.length}
-                            paginado={paginado}
-                        />
-                    </div>
-                }
+            </div>
+            {(currentDogs === "NoUserDo" || currentDogs === "NoTemper" || currentDogs === "NoName" || currentDogs.length === 0) ? "" :
+                <div className={style.PrimaryDiv}>
+                    <Paginado
+                        dogsPerPage={dogsPerPage}
+                        allDogs={allDogs.length}
+                        paginado={paginado}
+                    />
+                </div>
+            }
         </div>
     )
 }
